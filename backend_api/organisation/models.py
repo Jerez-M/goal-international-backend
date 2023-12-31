@@ -12,16 +12,15 @@ class Organisation(models.Model):
         ('FOUNDATION', 'FOUNDATION'),
         ('HEALTHCARE ORGANIZATION', 'HEALTHCARE ORGANIZATION'),
     )
-    organisation_code = 'GI'
     organisation_name = models.CharField(max_length=200, blank=True, null=True)
-    # organisation_code = models.CharField(max_length=10, blank=True, default='GI', null=True)
+    organisation_code = models.CharField(max_length=10, blank=True, default='GI', null=True)
     email_address = models.EmailField(blank=True, null=True)
     phone_number = models.CharField(max_length=25, null=True, blank=True)
     address = models.TextField(blank=True, null=True)
     district = models.CharField(max_length=50, blank=True, null=True)
     province = models.CharField(max_length=50, blank=True, null=True)
     country = models.CharField(max_length=50, blank=True, null=True)
-    organisation_type = models.CharField(max_length=25, blank=True, null=True, choices=ORGANISATION_TYPE_CHOICE)
+    organisation_type = models.CharField(max_length=250, blank=True, null=True, choices=ORGANISATION_TYPE_CHOICE)
     logo = models.ImageField(upload_to='organisation_logos', default='organisation_logos/default_logo.jpg', blank=True, null=True)
     active = models.BooleanField(default=True)
     organisation_number = models.CharField(max_length=100, blank=True, null=True, unique=True)
