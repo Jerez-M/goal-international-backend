@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework_simplejwt',
-    'drf_yasg'
+    'drf_yasg',
+    'accounts',
+    'organisation',
+    'administrator',
+    'superuser',
+    'general_employee'
 ]
 
 MIDDLEWARE = [
@@ -78,10 +83,21 @@ WSGI_APPLICATION = 'backend_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'goalinternationaldb',
+        'USER': 'Jeremiah',
+        'PASSWORD': '0202February.',
+        'HOST': 'localhost',
+        'PORT': 3306,
     }
 }
 
@@ -102,6 +118,13 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+AUTH_USER_MODEL = 'accounts.User'
+
+AUTHENTICATION_BACKENDS = [
+    "accounts.custom_auth_backend.UserAuthenticationBackend",
+    "django.contrib.auth.backends.ModelBackend"
 ]
 
 

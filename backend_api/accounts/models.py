@@ -6,7 +6,7 @@ from organisation.models import Organisation
 class User(AbstractUser):
     GENDER = (
         ('MALE', 'MALE'),
-        ('FEMALE', 'FEMALE')
+        ('FEMALE', 'FEMALE'),
     )
     ROLE = (
         ('SUPERUSER', 'SUPERUSER'),
@@ -27,15 +27,15 @@ class User(AbstractUser):
     )
     Employment_status = (
         ('FULL TIME', 'FULL TIME'),
-        ('PART TIME', 'PART TIME')
-        ('CONTRACT', 'CONTRACT')
+        ('PART TIME', 'PART TIME'),
+        ('CONTRACT', 'CONTRACT'),
     )
     STATUS = (
         ('ACTIVE', 'ACTIVE'),
-        ('RESIGNED', 'RESIGNED')
-        ('DISMISSED', 'DISMISSED')
-        ('ON LEAVE', 'ON LEAVE')
-        ('LEFT ORGANISATION', 'LEFT ORGANISATION')
+        ('RESIGNED', 'RESIGNED'),
+        ('DISMISSED', 'DISMISSED'),
+        ('ON LEAVE', 'ON LEAVE'),
+        ('LEFT ORGANISATION', 'LEFT ORGANISATION'),
     )
     organisation = models.ForeignKey(Organisation, blank=True, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, blank=True, null=True)
