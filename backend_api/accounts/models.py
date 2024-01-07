@@ -4,6 +4,11 @@ from organisation.models import Organisation
 
 
 class User(AbstractUser):
+    # exclude fields from AbstractUser
+    date_joined = None
+    last_login = None
+    email = None
+
     GENDER = (
         ('MALE', 'MALE'),
         ('FEMALE', 'FEMALE'),
@@ -54,8 +59,9 @@ class User(AbstractUser):
     province = models.CharField(max_length=255, blank=True, null=True)
     home_address = models.CharField(max_length=255, blank=True, null=True)
     job_tittle = models.CharField(max_length=200, blank=True, null=True, choices=Job_tittle)
-    date_created = models.DateField(auto_now_add=True, blank=True, null=True)
-    last_updated = models.DateTimeField(auto_now=True)
+    date_joined = models.DateField(blank=True, null=True, help_text="The date the employee joined the organisation")
+    date_created = models.DateField(auto_now_add=True, blank=True, null=True, help_text="The date the employee was enrolled on the organisation's system")
+    last_updated = models.DateTimeField(auto_now=True, blank=True, null=True)
     status = models.CharField(max_length=50, blank=True, null=True, choices=STATUS)
     employment_status = models.CharField(max_length=200, blank=True, null=True, choices=Employment_status)
 
